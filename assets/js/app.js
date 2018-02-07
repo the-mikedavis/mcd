@@ -11,7 +11,12 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import "phoenix_html";
+
+import renderBarchart from "./barchart";
+let barchart = document.getElementById("barchart");
+if (barchart)
+    renderBarchart();
 
 // Import local files
 //
