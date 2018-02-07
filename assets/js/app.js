@@ -13,10 +13,7 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html";
 
-import renderBarchart from "./barchart";
-let barchart = document.getElementById("barchart");
-if (barchart)
-    renderBarchart();
+import * as d3 from "d3";
 
 // Import local files
 //
@@ -24,3 +21,10 @@ if (barchart)
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import renderBarchart from "./barchart";
+
+let barchart = document.getElementById("barchart");
+if (barchart)
+    renderBarchart();
+
