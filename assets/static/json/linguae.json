@@ -1,0 +1,63 @@
+[
+    {
+        "name": "Java",
+        "time": 200,
+        "color": "#b07219"
+    },
+    {
+        "name": "Procesing",
+        "time": 40,
+        "color": "#0096D8",
+        "alias": "p3"
+    },
+    {
+        "name": "C",
+        "time": 42,
+        "color": "#555555"
+    },
+    {
+        "name": "Python",
+        "time": 20,
+        "color": "#3572A5",
+        "alias": "py"
+    },
+    {
+        "name": "HTML",
+        "time": 90,
+        "color": "#e34c26"
+    },
+    {
+        "name": "JavaScript",
+        "time": 400,
+        "color": "#f1e05a",
+        "alias": "JS"
+    },
+    {
+        "name": "CSS",
+        "time": 32,
+        "color": "#563d7c"
+    },
+    {
+        "name": "Shell",
+        "time": 28,
+        "color": "#89e051",
+        "alias": "sh"
+    },
+    {
+        "name": "Markdown",
+        "time": 60,
+        "alias": "md"
+    },
+    {
+        "name": "Clojure",
+        "time": 65,
+        "color": "#db5855",
+        "alias": "clj"
+    },
+    {
+        "name": "Elixir",
+        "time": 30,
+        "color": "#6e4a7e",
+        "alias": "ex"
+    }
+]
