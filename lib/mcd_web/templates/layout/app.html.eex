@@ -14,14 +14,16 @@
   <body>
     <div class="container">
       <header class="header">
+        <h1>Michael Davis</h1>
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li><%= link "Home", to: "/", class: "btn" %>
             <li><%= link "Projects", to: "/projects", class: "btn" %>
           </ul>
         </nav>
-        <h1>Michael Davis</h1>
       </header>
+
+      <hr>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

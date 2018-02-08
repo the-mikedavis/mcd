@@ -1,1 +1,45 @@
-$mobile: 768px;
+// import Hack font
+@import url(http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css);
+
+$font: 'Hack', monospace;
+
+header, p, text, h3 {
+    font-family: $font;
+}
+
+.container {
+    padding: 6%;
+}
+
+header {
+    h1 {
+        margin: 0;
+    }
+    ul {
+        list-style-type: none;
+        margin: 5% 0;
+        padding: 0;
+    }
+    li {
+        margin: 0 5px;
+        padding: 5px;
+        display: inline-block;
+        border: 1px solid rgba(#222, 0.3);
+        border-radius: 5px;
+        text-align: center;
+
+        a {
+            color: black;
+        }
+        a:visited {
+            color: black;
+        }
+        a:active, {
+            color: black;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}
