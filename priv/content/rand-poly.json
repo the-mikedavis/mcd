@@ -1,0 +1,5 @@
+{
+    "title": "Random Convex Polygon Field Population",
+    "description": "Sounds easy, but it's a bit harder than it looks, especially to make it look good. This was part of a class assignment that I took and ran with.",
+    "content": "svg id=\"rand_poly\" width=\"100%\" height=\"700px\"></svg><br><br><p>Refresh the page to get a new field of polygons.</p><p>Why generate a field like this? This was for my AI class. An assignment was to navigate a field of random polygons with A* search. You could just hard code a random looking map, but I wanted to go further.</p><p>This polygon field is generated using the feint circles, which are placed to not overlap. Below is the code which runs on this very page. Check it out!</p><script src=\"https://gist.github.com/the-mikedavis/528aa46f2f3e4b304b308ae0396ca247.js\"></script>"
+}
