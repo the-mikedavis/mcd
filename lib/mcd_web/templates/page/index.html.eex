@@ -9,8 +9,9 @@ front-end web design focusing on interaction and data.
 <a class="small" href="/language-graph">here</a>
 to see full size and download a dynamically rasterized PNG version.</p>
 <hr>
-<p>See some of my projects on the <a href="/projects">projects</a> 
-page. For contact, please email my 
+<p>See some of my projects on the
+<%= link "projects", to: project_path(@conn, :index) %>
+ page. For contact, please email my 
 <a target="_blank" href="https://github.com/the-mikedavis">
       GitHub email</a>. 
     You can also find me on

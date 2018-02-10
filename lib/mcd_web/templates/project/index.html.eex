@@ -1,0 +1,6 @@
+<%= for project <- @projects do %>
+  <h2><%= link project.title, to: project_path(@conn, :show, project)  %></h2>
+  <br>
+  <p><%= project.description %></p>
+  <hr>
+<% end %>
