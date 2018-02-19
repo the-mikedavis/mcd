@@ -1,14 +1,8 @@
 [
     {
         "name": "Java",
-        "time": 200,
+        "time": 240,
         "color": "#b07219"
-    },
-    {
-        "name": "Procesing",
-        "time": 40,
-        "color": "#0096D8",
-        "alias": "p3"
     },
     {
         "name": "C",
@@ -16,8 +10,13 @@
         "color": "#555555"
     },
     {
+        "name": "C++",
+        "time": 15,
+        "color": "#f34b7d"
+    },
+    {
         "name": "Python",
-        "time": 20,
+        "time": 25,
         "color": "#3572A5",
         "alias": "py"
     },
@@ -56,7 +55,7 @@
     },
     {
         "name": "Elixir",
-        "time": 30,
+        "time": 35,
         "color": "#6e4a7e",
         "alias": "ex"
     }
