@@ -18,6 +18,7 @@ defmodule McdWeb.Router do
 
     get "/", PageController, :index
     resources "/projects", ProjectController, only: [:index, :show]
+    get "/knowledge", TopicController, :index
   end
 
   # Other scopes may use custom stacks.
