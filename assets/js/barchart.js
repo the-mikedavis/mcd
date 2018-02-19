@@ -16,8 +16,6 @@ export default function () {
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
     d3.json('/json/linguae.json', function (data) {
-        console.log(data);
-
         const largest = Math.max.apply(Math, data.map(function (e) {
             return e.time;
         }));
