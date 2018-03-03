@@ -9,6 +9,10 @@ header {
   text-align: center;
   color: $bright;
   padding-bottom: 0;
+  
+  p {
+    color: rgba($bright, 0.5);
+  }
 
   hr {
     border: 0;
@@ -86,6 +90,9 @@ main {
     text-align: right;
     h1 {
       font-size: 3em;
+    }
+    p {
+      font-size: 1.3em;
     }
   }
   main {
