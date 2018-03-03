@@ -16,9 +16,9 @@ header {
 
   hr {
     border: 0;
-    height: 2px;
+    height: 1px;
     background: $slate;
-    background-image: linear-gradient(to right, $slate, $bright, $slate);
+    background-color: $bright;
   }
 
   ul {
