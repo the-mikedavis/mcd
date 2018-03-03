@@ -1,16 +1,14 @@
-# Use MongoDB in Express Middleware to Store Node.js Website Traffic
-
-
+---
+title: Use MongoDB in Express Middleware to Store Node.js Website Traffic
+date: 2017-07-25
+intro: Am I storing your traffic on my site? No. But could I? Yes, and quite easily.
+---
 
 MongoDB is an increasingly popular document-based database system. Its format is similar to JSON, which makes it a perfect match for the full-stack JavaScript developer.
 
 I've set up my website to have a MongoDB store which keeps track of all traffic. N.B.: I'm actually not paranoid.
 
-
-
 ## Try it at Home!
-
-
 
 Before I deploy anything to the server, I try to get it going on my Mac. The instructions for mac and linux are very similar. If you only have a Linux distro, skip down to Install. This should cover the install for mac.
 
@@ -34,8 +32,6 @@ $ mongod
 #   enter the mongo shell
 $ mongo
 ```
-
-
 
 ## Install
 
@@ -128,8 +124,8 @@ app.use(function (req, res, next) {
         referrer: req.headers['referer'] || req.headers['referrer'],
         userAgent: req.headers['user-agent']
     });
-  
-	//	save to the database
+
+    //save to the database
     t.save().catch(err => console.log('Failed to save to database'));
 
     next();
