@@ -1,45 +1,103 @@
 // import Hack font
-@import url(http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css);
+//@import url(http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css);
+// import google fonts
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond|Rufina|Source+Code+Pro);
+@import "vars", "constants";
 
-$font: 'Hack', monospace;
-
-header, p, text, h3, h2, h1 {
-    font-family: $font;
-}
-
-.container {
-    padding: 6%;
-}
 
 header {
-    h1 {
-        margin: 0;
-    }
-    ul {
-        list-style-type: none;
-        margin: 5% 0;
-        padding: 0;
-    }
-    li {
-        margin: 0 5px;
-        padding: 5px;
-        display: inline-block;
-        border: 1px solid rgba(#222, 0.3);
-        border-radius: 5px;
-        text-align: center;
+  text-align: center;
+  color: $bright;
+  padding-bottom: 0;
 
-        a {
-            color: black;
-        }
-        a:visited {
-            color: black;
-        }
-        a:active, {
-            color: black;
-        }
+  hr {
+    border: 0;
+    height: 1px;
+    background: $slate;
+    background-image: linear-gradient(to right, $slate, $bright, $slate);
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 5% 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0 5px;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+
+    a {
+      color: $bright;
     }
+    a:visited {
+      color: $bright;
+    }
+    a:active, {
+      color: $bright;
+    }
+  }
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+main {
+  background-color: #fefefe;
+  border-radius: 5px;
+  padding: 7%;
+  margin: 6%;
+  margin-bottom: 50px;
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: $bright;
+    background-image: linear-gradient(to right, $bright, $slate, $bright);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  header {
+    padding: 8%;
+  }
+}
+
+@media (min-width: 768px){
+  header {
+    padding: 10% 20%;
+  }
+
+  p, h3 {
+    font-size: 1.5em;
+  }
+}
+
+@media (min-width: 1224px) {
+  header {
+    margin-top: 50px;
+    grid-area: header;
+    font-size: 0.9em;
+    padding: 50px 5%;
+    text-align: right;
+    h1 {
+      font-size: 3em;
+    }
+  }
+  main {
+    grid-area: content;
+    h3 {
+      font-size: 2em;
+    }
+  }
+  .container {
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "header content";
+  }
 }

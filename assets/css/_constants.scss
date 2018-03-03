@@ -1,0 +1,23 @@
+.small {
+  font-size: 0.8em;
+}
+
+html, body {
+  background-color: $slate;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+header, h2, h1 {
+  font-family: $display_font;
+}
+
+p, h3 {
+  font-family: $text_font;
+}
+
+text {
+  font-family: $mono_font;
+}

@@ -15,6 +15,12 @@
     <div class="container">
       <header class="header">
         <h1>Michael Davis</h1>
+        <hr>
+        <p id="tldr">I'm a Computer Science student from the University of Miami.
+        I'm pretty have some experience with web design all across the stack, but
+        these days I'm mostly interested in functional programming and computer
+        vision.</p>
+        <hr>
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li><%= link "Home", to: "/", class: "btn" %>
@@ -22,8 +28,6 @@
           </ul>
         </nav>
       </header>
-
-      <hr>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
