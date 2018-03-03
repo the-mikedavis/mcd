@@ -20,7 +20,7 @@ defmodule Mcd.Mixfile do
   def application do
     [
       mod: {Mcd.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timex, :yamerl]
     ]
   end
 
@@ -40,7 +40,10 @@ defmodule Mcd.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:earmark, "~> 1.2.4"},
+      {:timex, "~> 3.2.1"},
+      {:yamerl, "~> 0.6.0"}
     ]
   end
 
