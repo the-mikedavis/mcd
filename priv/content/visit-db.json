@@ -1,5 +1,0 @@
-{
-    "title": "Use MongoDB in Express Middleware to Store Node.js Website Traffic",
-    "description": "While I don't really need to store any information about the site, I wanted some MongoDB experience. This middleware allows me to log your info to my database!",
-    "content": "This was on my second server setup, which was run by Node.js with Express. Now my site runs on a Phoenix (Elixir) backend. <script src=\"https://gist.github.com/the-mikedavis/b2bfbfb98d4be53c26d77396f8ec392e.js\"></script>"
-}

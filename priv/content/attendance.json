@@ -1,5 +1,0 @@
-{
-    "title": "Headless Stack Overflow Daily Attendance",
-    "description": "Stack Overflow awards a gold badge for checking into the site for 100 days in a row. I wrote a simple script which uses the phantom.js headless browser to log in and read the progress of the badge. Then I set this script up to run every day.",
-    "content": "Who actually uses the site <i>every</i> day? After logging in for 40 days straight and then losing it, I snapped and wrote this script. Phantom.js allows you to use a \"Headless\" browser to automate your nefarious internet operations. It's quite easy to build up a simple application to navigate through some pages. Then you can leverage Linux's <code>cron</code> utility to schedule tasks.</p><br><script src=\"https://gist.github.com/the-mikedavis/ef5eee1d8be5d0186df97002d8a56bc7.js\"></script><p>"
-}
