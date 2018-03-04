@@ -2,23 +2,31 @@ export default function () {
   const svg = d3.select('svg#barchart'),
     margin = window.margin || {left: 40, right: 20, top: 20, bottom: 30};
 
-  let height = svg.node().getBoundingClientRect().width,
-    width;
+  let lang_data;
 
-  svg.attr('height', height);
+  function render(data) {
 
-  width = height - margin.right - margin.left;
-  height = height - margin.top - margin.bottom;
+    if (data === undefined)
+      data = lang_data;
 
-  const x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-    y = d3.scaleLinear().rangeRound([height, 0]),
-    g = svg.append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
+    const largest = Math.max.apply(Math, data.map(e => e.time));
 
-  d3.json('/json/linguae.json', function (data) {
-    const largest = Math.max.apply(Math, data.map(function (e) {
-      return e.time;
-    }));
+    svg.selectAll('*').remove();
+    lang_data = data;
+
+    // sizing stuff
+    let height = svg.node().getBoundingClientRect().width,
+      width;
+
+    svg.attr('height', height);
+
+    width = height - margin.right - margin.left;
+    height = height - margin.top - margin.bottom;
+
+    let x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+      y = d3.scaleLinear().rangeRound([height, 0]),
+      g = svg.append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
 
     x.domain(data.map(function (e) {
       return width > 500 ? e.name : e.alias || e.name;
@@ -46,6 +54,13 @@ export default function () {
       .attr('stroke', '#000')
       .attr('stroke-width', 1)
       .style('fill', d => d.color || "#000");
+  }
 
-  });
+  d3.json('/json/linguae.json', render);
+
+  let timer;
+  window.onresize = function() {
+    clearTimeout(timer);
+    timer = setTimeout(render, 100);
+  };
 }
