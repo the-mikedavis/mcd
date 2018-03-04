@@ -28,3 +28,9 @@ if (barchart) {
     renderBarchart();
 }
 
+let codeBlocks = [].slice.call(document.getElementsByTagName('code')),
+    noCodeBlocks = codeBlocks.filter(
+  e => e.className.indexOf('inline') < 0).length;
+
+if (noCodeBlocks)
+  hljs.initHighlightingOnLoad();

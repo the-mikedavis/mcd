@@ -5,7 +5,7 @@ exports.config = {
             joinTo: "js/app.js",
             order: {
                 before: [
-                    "vendor/js/d3.min.js"
+                    "vendor/js/*.js"
                 ]
             }
 
@@ -25,7 +25,12 @@ exports.config = {
             // }
         },
         stylesheets: {
-            joinTo: "css/app.css"
+            joinTo: "css/app.css",
+            order: {
+              before: [
+                "vendor/css/*.css"
+              ]
+            }
         },
         templates: {
             joinTo: "js/app.js"

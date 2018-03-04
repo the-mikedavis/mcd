@@ -1,5 +1,3 @@
-// import Hack font
-//@import url(http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css);
 // import google fonts
 @import "vars", "constants";
 
@@ -8,7 +6,7 @@ header {
   text-align: center;
   color: $bright;
   padding-bottom: 0;
-  
+
   p {
     color: rgba($bright, 0.5);
   }
@@ -50,7 +48,7 @@ main {
   padding: 7%;
   margin: 6%;
   margin-bottom: 50px;
-  
+
   p {
     font-weight: lighter;
   }
@@ -89,7 +87,7 @@ main {
     white-space: pre-line;
   }
   code.inline {
-    font-size: 1.2em;
+    font-size: 0.9em;
   }
 }
 
@@ -110,8 +108,8 @@ main {
     h6 { font-size: 2.0em; }
     .small { font-size: 1.2em; }
     p, li { font-size: 1.5em; }
-    code { font-size: 1.5em; }
-    code.inline { font-size: 1.2em; }
+    code { font-size: 1.2em; }
+    code.inline { font-size: 0.9em; }
   }
 }
 

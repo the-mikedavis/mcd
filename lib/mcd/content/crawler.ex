@@ -3,7 +3,8 @@ defmodule Mcd.Content.Crawler do
 
   def crawl do
     File.ls!("priv/posts")
-    |> Enum.map(&Post.compile/1)
+    |> Enum.map(fn(file) -> Task.async(fn -> Post.compile(file) end) end)
+    |> Enum.map(&Task.await/1)
     |> Enum.sort(&sort/2)
   end
 
