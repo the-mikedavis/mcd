@@ -129,6 +129,14 @@ main {
   }
   main {
     grid-area: content;
+
+    ul#topics {
+      li {
+        display: inline-block;
+        width: 40%;
+        margin: 2%;
+      }
+    }
   }
   .container {
     padding: 2%;
