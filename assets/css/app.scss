@@ -1,7 +1,6 @@
 // import Hack font
 //@import url(http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack-subset.css);
 // import google fonts
-@import url(https://fonts.googleapis.com/css?family=EB+Garamond|Rufina|Source+Code+Pro);
 @import "vars", "constants";
 
 
@@ -35,19 +34,14 @@ header {
     font-weight: 400;
 
     a {
-      color: $bright;
-    }
-    a:visited {
-      color: $bright;
-    }
-    a:active, {
-      color: $bright;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.5em;
+      &:hover, &:active {
+        color: #fff;
+      }
     }
   }
-}
-
-a {
-  text-decoration: none;
 }
 
 main {
@@ -56,6 +50,10 @@ main {
   padding: 7%;
   margin: 6%;
   margin-bottom: 50px;
+  
+  p {
+    font-weight: lighter;
+  }
 
   hr {
     border: 0;
@@ -63,21 +61,57 @@ main {
     background: $bright;
     background-image: linear-gradient(to right, $bright, $slate, $bright);
   }
+
+  a {
+    color: black;
+  }
+
+  code {
+    background-color: #ccc;
+    padding: 8px;
+    border-radius: 3px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  code.inline {
+    display: inline;
+    padding: 1px 5px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   header {
     padding: 8%;
+    padding-bottom: 0;
+  }
+  code {
+    white-space: pre-line;
+  }
+  code.inline {
+    font-size: 1.2em;
   }
 }
 
 @media (min-width: 768px){
   header {
-    padding: 10% 20%;
+    padding: 10% 20% 0 20%;
+    h1 {
+      font-size: 3em;
+    }
   }
 
-  p, h3 {
-    font-size: 1.5em;
+  main {
+    h1 { font-size: 3em; }
+    h2 { font-size: 2.8em; }
+    h3 { font-size: 2.6em; }
+    h4 { font-size: 2.4em; }
+    h5 { font-size: 2.2em; }
+    h6 { font-size: 2.0em; }
+    .small { font-size: 1.2em; }
+    p, li { font-size: 1.5em; }
+    code { font-size: 1.5em; }
+    code.inline { font-size: 1.2em; }
   }
 }
 
@@ -86,10 +120,10 @@ main {
     margin-top: 50px;
     grid-area: header;
     font-size: 0.9em;
-    padding: 50px 5%;
+    padding: 75px 5%;
     text-align: right;
     h1 {
-      font-size: 3em;
+      font-size: 2em;
     }
     p {
       font-size: 1.3em;
@@ -97,9 +131,6 @@ main {
   }
   main {
     grid-area: content;
-    h3 {
-      font-size: 2em;
-    }
   }
   .container {
     padding: 2%;

@@ -1,5 +1,8 @@
-$display_font: 'Rufina', serif;
-$text_font: 'EB Garamond', serif;
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond|Source+Sans+Pro|Source+Code+Pro);
+//$display_font: 'Rufina', serif;
+//$text_font: 'EB Garamond', serif;
+$display_font: 'EB Garamond', serif;
+$text_font: 'Source Sans Pro', sans-serif;
 $mono_font: 'Source Code Pro', monospace;
 $slate: #333;
 $bright: #efefef;
