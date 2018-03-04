@@ -13,7 +13,7 @@ Here are the problems:
 
 ### First Thing's First
 
-Remove windows. I'm not dealing with powershell (or god forbid... Command Prompt). I had previously installed Elementary OS, which is basically a lighter version of Ubuntu, and I'd liked it very much.
+Remove Windows. I'm not dealing with PowerShell (or god forbid... Command Prompt). I had previously installed Elementary OS, which is basically a lighter version of Ubuntu, and I'd liked it very much.
 
 #### Windows
 
