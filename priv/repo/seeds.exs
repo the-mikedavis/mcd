@@ -11,19 +11,13 @@
 # and so on) as they will fail if something goes wrong.
 
 alias Mcd.Repo
-alias Mcd.Content.Project
+alias Mcd.Content.Topic
 
-read = fn name ->
-  "priv/content/" <> name <> ".json"
-  |> File.read!()
-  |> Poison.decode!(as: %Project{})
+insert = fn str ->
+  Repo.get_by(Topic, name: str) || Repo.insert!(%Topic{name: str})
 end
 
-insert = fn (%Project{title: t} = p) ->
-  Repo.get_by(Project, title: t) || Repo.insert!(p)
-end
-
-~w(attendance)
-|> Enum.map(read)
+"priv/content/knowledge.json"
+|> File.read!
+|> Poison.decode!()
 |> Enum.each(insert)
-
