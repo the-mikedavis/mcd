@@ -2,7 +2,7 @@
 <svg id="barchart" width="100%"></svg>
 <p class="small">Colors via GitHub.</p>
 <p>See some of my projects on the
-<%= link "projects", to: project_path(@conn, :index) %>
+<%= link "projects", to: post_path(@conn, :index) %>
  page. For contact, please email my 
 <a target="_blank" href="https://github.com/the-mikedavis">
       GitHub email</a>. 

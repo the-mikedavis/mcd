@@ -1,3 +1,0 @@
-<h2><%= @project.title %></h1>
-<br>
-<p><%= as_html(@project.content) %></p>

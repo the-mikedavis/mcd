@@ -17,7 +17,7 @@ defmodule McdWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/projects", ProjectController, only: [:index, :show]
+    resources "/projects", PostController, only: [:index, :show]
     get "/knowledge", TopicController, :index
   end
 
