@@ -1,6 +1,24 @@
-@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro|EB+Garamond|Source+Sans+Pro);
+@font-face {
+  font-family: 'Cousine';
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/Cousine/Cousine-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/EB_Garamond/EBGaramond-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("truetype");
+}
+
 $display_font: 'EB Garamond', serif;
 $text_font: 'Source Sans Pro', sans-serif;
-$mono_font: 'Anonymous Pro', monospace;
+$mono_font: 'Cousine', monospace;
 $slate: #333;
 $bright: #efefef;
