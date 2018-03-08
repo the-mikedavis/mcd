@@ -6,7 +6,12 @@ header {
   padding-bottom: 0;
 
   p {
-    color: rgba($bright, 0.5);
+    color: #aaa;
+    transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+    &:hover {
+      color: $bright;
+    }
   }
 
   hr {
@@ -33,6 +38,8 @@ header {
       color: #ccc;
       text-decoration: none;
       font-size: 1.5em;
+      transition: color 0.5s;
+      -webkit-transition: color 0.5s;
       &:hover, &:active {
         color: #fff;
       }
@@ -60,6 +67,11 @@ main {
 
   a {
     color: black;
+    transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+    &:hover {
+      color: #666;
+    }
   }
 
   code {
