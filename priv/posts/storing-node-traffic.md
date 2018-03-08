@@ -21,15 +21,12 @@ $ mkdir -p /data/db
 
 $ sudo chown -R /data/db
 
-#   run mongod, which creates the mongodb 'server'
-#
-#   this will consume this terminal
-#
-#   if you want to run this in the background, I
-#   recommend tmux or screen
 $ mongod
+```
 
-#   enter the mongo shell
+In a new shell,
+
+```shell
 $ mongo
 ```
 
@@ -46,12 +43,10 @@ $ sudo mkdir -p /data/db
 
 $ sudo chown -R `id -un` /data/db
 
-#   start it as a system process
 $ sudo systemctl start mongodb
 
 $ sudo systemctl status mongodb
 
-#   enable mongodb on startup
 $ sudo systemctl enable mongodb
 ```
 
@@ -61,7 +56,9 @@ Check your databases with `$ mongo`
 
 Mongoose takes a lot of the hassle out of MongoDB.
 
-`$ sudo npm install mongoose@4.10.8`
+```shell
+$ sudo npm install mongoose@4.10.8
+```
 
 There's an odd deprecation warning (which as far as I know is non-fatal) which you can avoid in this version.
 

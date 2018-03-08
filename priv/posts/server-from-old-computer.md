@@ -43,18 +43,15 @@ $ sudo apt update
 $ sudo apt full-upgrade
 ```
 
-This will allow you access to all modern packages.
+This will allow you access to all modern packages. Now start up SSH on the machine so you can log in remotely.
 
 ```shell
-#   install ssh so you can log in from your current computer
 $ sudo apt install openssh-client openssh-server
-#   restart the ssh service
 $ sudo service ssh restart
-#   make a key to connect to other machines
-$ ssh-keygen
+$ ssh-keygen -t ecdsa -b 521
 ```
 
-That allows you to log in remotely
+That allows you to log in remotely. `ssh-keygen` makes a new ssh key, allowing you to log into other machines _from_ the server. I prefer `ecdsa`, which is based on elliptical curve key cryptography, and `521` is the largest bit size supported commonly for `ecdsa`.
 
 ```shell
 $ sudo apt install git nginx fail2ban iptables nodejs-legacy
