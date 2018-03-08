@@ -76,7 +76,7 @@ main {
 
   code {
     background-color: #ccc;
-    padding: 8px;
+    padding: 10px;
     border-radius: 3px;
     width: 100%;
     display: inline-block;
@@ -84,7 +84,7 @@ main {
 
   code.inline {
     display: inline;
-    padding: 1px 5px;
+    padding: 5px 10px;
   }
 }
 
@@ -116,10 +116,10 @@ main {
     h4 { font-size: 2.4em; }
     h5 { font-size: 2.2em; }
     h6 { font-size: 2.0em; }
-    .small { font-size: 1.2em; }
+    .small { font-size: 1.0em; }
     p, li { font-size: 1.5em; }
-    code { font-size: 1.2em; }
-    code.inline { font-size: 0.9em; }
+    code { font-size: 1.1em; }
+    code.inline { font-size: 0.7em; }
   }
 }
 
@@ -138,6 +138,7 @@ main {
     }
   }
   main {
+
     grid-area: content;
 
     ul#topics {
