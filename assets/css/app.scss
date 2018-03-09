@@ -25,6 +25,14 @@ header {
     list-style-type: none;
     margin: 5% 0;
     padding: 0;
+    display: inline-block;
+  }
+
+  svg {
+    fill: $bright;
+    width: 25px;
+    display: inline-block;
+    margin: 10px 20px -5px 20px;
   }
 
   li {
