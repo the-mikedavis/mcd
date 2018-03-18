@@ -19,10 +19,12 @@ defmodule McdWeb.Router do
     get "/", PageController, :index
     resources "/projects", PostController, only: [:index, :show]
     get "/knowledge", TopicController, :index
+    get "/vigilo", VigiloController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", McdWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", McdWeb do
+    pipe_through :api
+
+    post "/vigilo", VigiloController, :update
+  end
 end
