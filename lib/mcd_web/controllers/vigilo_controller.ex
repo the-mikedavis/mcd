@@ -6,7 +6,7 @@ defmodule McdWeb.VigiloController do
     render conn, "index.html", devices: devs
   end
 
-  def update(conn, %{ "devices" => devices }) do
+  def update(conn, %{ "_json" => devices }) do
     GenServer.cast(:attendant, { :update, devices })
     render conn, "update.json", status: "success"
   end
