@@ -2,8 +2,8 @@ defmodule McdWeb.VigiloController do
   use McdWeb, :controller
 
   def index(conn, _params) do
-    devs = GenServer.call(:attendant, :devices)
-    render conn, "index.html", devices: devs
+    { devs, time } = GenServer.call(:attendant, :status)
+    render conn, "index.html", devices: devs, time: time
   end
 
   def update(conn, %{ "_json" => devices }) do

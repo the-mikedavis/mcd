@@ -8,3 +8,4 @@
     <% end %>
   </ul>
 <% end %>
+<p>Last time I checked was <%= ecto_time_as_string(@time) %>.</p>
