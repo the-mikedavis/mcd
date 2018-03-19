@@ -34,7 +34,7 @@ config :mcd, McdWeb.Endpoint,
 config :mcd, McdWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg|scss)$},
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg|scss|ico)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/mcd_web/views/.*(ex)$},
       ~r{lib/mcd_web/templates/.*(eex)$}
