@@ -5,13 +5,6 @@ defmodule McdWeb.VigiloView do
     %{status: stat}
   end
 
-  def ecto_time_as_string(nil), do: "never"
-  def ecto_time_as_string(time) do
-    time
-    |> Ecto.DateTime.to_erl
-    |> NaiveDateTime.from_erl!
-    |> DateTime.from_naive!("Etc/UTC")
-    |> DateTime.to_string
-    #Ecto.DateTime.to_string(time) 
-  end
+  def recognize_time(nil), do: "never"
+  def recognize_time(time), do: time
 end

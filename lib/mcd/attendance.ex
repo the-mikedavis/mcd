@@ -14,6 +14,8 @@ defmodule Mcd.Attendance do
   end
 
   def handle_cast({ :update, devices }, _state) do
-    { :noreply, { devices, Ecto.DateTime.utc() } }
+    time = Timex.now("EDT")
+           |> Timex.format!("{ISOdate} {ISOtime}")
+    { :noreply, { devices, time } }
   end
 end
