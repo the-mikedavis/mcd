@@ -1,66 +1,84 @@
 export default function () {
-  const svg = d3.select('svg#barchart'),
-    margin = window.margin || {left: 40, right: 20, top: 20, bottom: 30};
+  var svg = d3.select("svg#barchart"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    true_width = svg.node().getBoundingClientRect().width,
+    height = true_width / 2,
+    width = true_width - margin.right - margin.left;
 
-  let lang_data;
+  const colors = {
+    "Java": "#b07219",
+    "C": "#555555",
+    "C++": "#f34b7d",
+    "Python": "#3572A5",
+    "HTML": "#e34c26",
+    "JavaScript": "#f1e05a",
+    "CSS": "#563d7c",
+    "Shell": "#89e051",
+    "Clojure": "#db5855",
+    "Elixir": "#6e4a7e"
+  };
 
-  function render(data) {
+  svg.attr('height', height);
 
-    if (data === undefined)
-      data = lang_data;
+  height = height - margin.top - margin.bottom;
 
-    const largest = Math.max.apply(Math, data.map(e => e.time));
+  var parseDate = d3.timeParse("%Y %b %d");
 
-    svg.selectAll('*').remove();
-    lang_data = data;
+  var x = d3.scaleTime().range([0, width]),
+    y = d3.scaleLinear().range([height, 0]);
 
-    // sizing stuff
-    let height = svg.node().getBoundingClientRect().width,
-      width;
+  var stack = d3.stack();
 
-    svg.attr('height', height);
+  var area = d3.area()
+    .curve(d3.curveMonotoneX)
+    .x(function(d, i) { return x(d.data.date); })
+    .y0(function(d) { return y(d[0]); })
+    .y1(function(d) { return y(d[1]); });
 
-    width = height - margin.right - margin.left;
-    height = height - margin.top - margin.bottom;
+  var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    let x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-      y = d3.scaleLinear().rangeRound([height, 0]),
-      g = svg.append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
+  d3.csv("/data/languages.csv", type, function(error, data) {
+    if (error) throw error;
 
-    x.domain(data.map(function (e) {
-      return width > 500 ? e.name : e.alias || e.name;
-    }));
-    y.domain([0, largest]);
+    var keys = data.columns.slice(1);
 
-    g.append('g')
-      .attr('class', 'axis xaxis')
-      .attr('transform', `translate(0,${height})`)
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    stack.keys(keys);
+
+    var layer = g.selectAll(".layer")
+      .data(stack(data))
+      .enter().append("g")
+      .attr("class", "layer")
+      .attr('title', function(d) { return d.key; });
+
+    layer.append("path")
+      .attr("class", "area")
+      .style("fill", function(d) { return colors[d.key]; })
+      .attr("d", area);
+
+    layer.filter(function(d) { return d[d.length - 1][1] - d[d.length - 1][0] > 0.01; })
+      .append("text")
+      .attr("x", width - 6)
+      .attr("y", function(d) { return y((d[d.length - 1][0] + d[d.length - 1][1]) / 2); })
+      .attr("dy", ".35em")
+      .style("font", "10px sans-serif")
+      .style("text-anchor", "end")
+      .text(function(d) { return d.key; });
+
+    g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
-    g.append('g')
-      .attr('class', 'axis yaxis')
-      .call(d3.axisLeft(y).ticks(5));
+    g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"));
+  });
 
-    g.selectAll('rect.bar')
-      .data(data)
-      .enter()
-      .append('rect')
-      .classed('bar', true)
-      .attr('x', d => x(width > 500 ? d.name : d.alias || d.name))
-      .attr('y', d => y(d.time))
-      .attr('width', x.bandwidth())
-      .attr('height', d => height - y(d.time))
-      .attr('stroke', '#000')
-      .attr('stroke-width', 1)
-      .style('fill', d => d.color || "#000");
+  function type(d, i, columns) {
+    d.date = parseDate(d.date);
+    for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = d[columns[i]] / 100;
+    return d;
   }
-
-  d3.json('/json/linguae.json', render);
-
-  let timer;
-  window.onresize = function() {
-    clearTimeout(timer);
-    timer = setTimeout(render, 100);
-  };
 }
