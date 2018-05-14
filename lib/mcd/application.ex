@@ -15,7 +15,7 @@ defmodule Mcd.Application do
       # Start your own worker by calling: Mcd.Worker.start_link(arg1, arg2, arg3)
       # worker(Mcd.Worker, [arg1, arg2, arg3]),
       worker(Mcd.Content.Repo, []),
-      worker(Mcd.Attendance, [])
+      #worker(Mcd.Attendance, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
