@@ -7,7 +7,7 @@ intro: Splitting a room can be awkward. Vigilo makes it easier.
 ### The Story
 
 If you've ever shared a room with a roommate, you've probably said this a
-thousand times: _I wonder if \<insert name here\> is in the room right now._
+thousand times: _I wonder if [insert name here] is in the room right now._
 Well, at least I know I did. Whether it's to take a nap, change clothes, or
 just run in and grab a book, entering a shared room can quickly become an
 ordeal especially when your roommate has a girlfriend. To make it all much
