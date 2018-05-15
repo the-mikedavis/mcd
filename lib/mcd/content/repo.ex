@@ -7,6 +7,8 @@ defmodule Mcd.Content.Repo do
 
   def init(:ok) do
     posts = Mcd.Content.Crawler.crawl
+            |> Enum.sort_by(&(Date.to_erl(&1.date)))
+            |> Enum.reverse
     {:ok, posts}
   end
 
