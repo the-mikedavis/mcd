@@ -43,7 +43,9 @@ defmodule Mcd.Mixfile do
       {:cowboy, "~> 1.0"},
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.2.1"},
-      {:yamerl, "~> 0.6.0"}
+      {:yamerl, "~> 0.6.0"},
+      # deploy
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 
