@@ -1,15 +1,13 @@
-<h1>Languages I've Used Over Time</h1>
-<svg id="barchart" width="100%"></svg>
-<p class="small">Colors via GitHub.</p>
-<p>See some of my projects on the
+<figure><embed src="https://wakatime.com/share/@the_mikedavis/7f0d1875-b98f-4064-954f-a97f026d1187.svg"></embed></figure>
+<p>Check out some cool things I do on the
 <%= link "projects", to: post_path(@conn, :index) %>
- page. For contact, please email my 
+ page. For contact, please email my
 <a target="_blank" href="https://github.com/the-mikedavis">
-      GitHub email</a>. 
+      GitHub email</a>.
 You can also find me on
-<a href="https://www.linkedin.com/in/michael-davis-81b03b141/" 
+<a href="https://www.linkedin.com/in/michael-davis-81b03b141/"
        target="_blank">LinkedIn</a>
 and
-<a href="https://stackoverflow.com/users/7232773/m-davis" 
+<a href="https://stackoverflow.com/users/7232773/m-davis"
        target="_blank">StackOverflow</a>.</p>
-<p>Check out some of my <a href="/knowledge">knowledge areas</a>.</p>
+   <!--<p>Check out some of my <a href="/knowledge">knowledge areas</a>.</p>-->
