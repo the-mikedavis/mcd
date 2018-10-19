@@ -3,9 +3,8 @@ defmodule Mcd.Content.Topic do
   import Ecto.Changeset
   alias Mcd.Content.Topic
 
-
   schema "topics" do
-    field :name, :string
+    field(:name, :string)
 
     timestamps()
   end

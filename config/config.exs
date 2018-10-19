@@ -12,10 +12,10 @@ config :mcd,
 # Configures the endpoint
 config :mcd, McdWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "346JR6Jb1qRYRaoXnbBanJ0rgYuWhqAOnnvky8osqvvd9x4WrJv+aTJeuBfzNBip",
+  secret_key_base:
+    "346JR6Jb1qRYRaoXnbBanJ0rgYuWhqAOnnvky8osqvvd9x4WrJv+aTJeuBfzNBip",
   render_errors: [view: McdWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Mcd.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Mcd.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +24,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

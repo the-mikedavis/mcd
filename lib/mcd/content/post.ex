@@ -4,21 +4,22 @@ defmodule Mcd.Content.Post do
   defstruct slug: "", title: "", date: "", intro: "", content: ""
 
   def compile(file) do
-    post = %Post{ slug: file_to_slug(file) }
+    post = %Post{slug: file_to_slug(file)}
 
     Path.join(["priv/posts", file])
-    |> File.read!
+    |> File.read!()
     |> split
     |> extract(post)
   end
 
   defp file_to_slug(file) do
-    String.replace(file, ~r/\.md$/, "") # remove the extension
+    # remove the extension
+    String.replace(file, ~r/\.md$/, "")
   end
 
   defp split(data) do
     [frontmatter, markdown] = String.split(data, ~r/\n-{3,}\n/, parts: 2)
-    { parse_yaml(frontmatter), Earmark.as_html!(markdown) }
+    {parse_yaml(frontmatter), Earmark.as_html!(markdown)}
   end
 
   defp parse_yaml(yaml) do
@@ -27,11 +28,13 @@ defmodule Mcd.Content.Post do
   end
 
   defp extract({props, content}, post) do
-    %{ post |
-      title: get_prop(props, "title"),
-      date: Timex.parse!(get_prop(props, "date"), "{ISOdate}"),
-      intro: get_prop(props, "intro"),
-      content: content }
+    %{
+      post
+      | title: get_prop(props, "title"),
+        date: Timex.parse!(get_prop(props, "date"), "{ISOdate}"),
+        intro: get_prop(props, "intro"),
+        content: content
+    }
   end
 
   defp get_prop(props, key) do

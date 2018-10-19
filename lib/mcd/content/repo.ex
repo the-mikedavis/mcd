@@ -2,18 +2,20 @@ defmodule Mcd.Content.Repo do
   use GenServer
 
   def start_link() do
-    GenServer.start_link(__MODULE__, :ok, [name: __MODULE__])
+    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
   def init(:ok) do
-    posts = Mcd.Content.Crawler.crawl
-            |> Enum.sort_by(&(Date.to_erl(&1.date)))
-            |> Enum.reverse
+    posts =
+      Mcd.Content.Crawler.crawl()
+      |> Enum.sort_by(&Date.to_erl(&1.date))
+      |> Enum.reverse()
+
     {:ok, posts}
   end
 
   def get_by_slug(slug) do
-    GenServer.call(__MODULE__, {:get_by_slug, slug} )
+    GenServer.call(__MODULE__, {:get_by_slug, slug})
   end
 
   def list() do
@@ -21,7 +23,7 @@ defmodule Mcd.Content.Repo do
   end
 
   def handle_call({:get_by_slug, slug}, _from, posts) do
-    case Enum.find(posts, fn (x) -> x.slug == slug end) do
+    case Enum.find(posts, fn x -> x.slug == slug end) do
       nil -> {:reply, :not_found, posts}
       post -> {:reply, {:ok, post}, posts}
     end

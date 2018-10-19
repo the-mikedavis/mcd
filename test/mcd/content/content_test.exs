@@ -6,8 +6,16 @@ defmodule Mcd.ContentTest do
   describe "projects" do
     alias Mcd.Content.Project
 
-    @valid_attrs %{content: "some content", description: "some description", title: "some title"}
-    @update_attrs %{content: "some updated content", description: "some updated description", title: "some updated title"}
+    @valid_attrs %{
+      content: "some content",
+      description: "some description",
+      title: "some title"
+    }
+    @update_attrs %{
+      content: "some updated content",
+      description: "some updated description",
+      title: "some updated title"
+    }
     @invalid_attrs %{content: nil, description: nil, title: nil}
 
     def project_fixture(attrs \\ %{}) do
@@ -37,7 +45,8 @@ defmodule Mcd.ContentTest do
     end
 
     test "create_project/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Content.create_project(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} =
+               Content.create_project(@invalid_attrs)
     end
 
     test "update_project/2 with valid data updates the project" do
@@ -51,14 +60,20 @@ defmodule Mcd.ContentTest do
 
     test "update_project/2 with invalid data returns error changeset" do
       project = project_fixture()
-      assert {:error, %Ecto.Changeset{}} = Content.update_project(project, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Content.update_project(project, @invalid_attrs)
+
       assert project == Content.get_project!(project.id)
     end
 
     test "delete_project/1 deletes the project" do
       project = project_fixture()
       assert {:ok, %Project{}} = Content.delete_project(project)
-      assert_raise Ecto.NoResultsError, fn -> Content.get_project!(project.id) end
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Content.get_project!(project.id)
+      end
     end
 
     test "change_project/1 returns a project changeset" do
@@ -111,7 +126,10 @@ defmodule Mcd.ContentTest do
 
     test "update_topic/2 with invalid data returns error changeset" do
       topic = topic_fixture()
-      assert {:error, %Ecto.Changeset{}} = Content.update_topic(topic, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Content.update_topic(topic, @invalid_attrs)
+
       assert topic == Content.get_topic!(topic.id)
     end
 

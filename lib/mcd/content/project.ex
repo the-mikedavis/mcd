@@ -3,11 +3,10 @@ defmodule Mcd.Content.Project do
   import Ecto.Changeset
   alias Mcd.Content.Project
 
-
   schema "projects" do
-    field :content, :string
-    field :description, :string
-    field :title, :string
+    field(:content, :string)
+    field(:description, :string)
+    field(:title, :string)
 
     timestamps()
   end
