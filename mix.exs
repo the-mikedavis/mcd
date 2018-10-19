@@ -10,7 +10,16 @@ defmodule Mcd.Mixfile do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.travis": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        bless: :test
+      ],
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -44,6 +53,11 @@ defmodule Mcd.Mixfile do
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.2.1"},
       {:yamerl, "~> 0.6.0"},
+      # test
+      {:credo, "~> 0.9", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.9", only: :test},
+      {:mox, "~> 0.3"},
+      {:private, "~> 0.1.1"},
       # deploy
       {:distillery, "~> 2.0.0", runtime: false}
     ]
@@ -59,7 +73,24 @@ defmodule Mcd.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      bless: [&bless/1]
     ]
+  end
+
+  defp bless(_) do
+    [
+      {"compile", ["--warnings-as-errors", "--force"]},
+      {"coveralls.html", []},
+      {"format", ["--check-formatted"]},
+      {"credo", []}
+    ]
+    |> Enum.each(fn {task, args} ->
+      [:cyan, "Running #{task} with args #{inspect(args)}"]
+      |> IO.ANSI.format()
+      |> IO.puts()
+
+      Mix.Task.run(task, args)
+    end)
   end
 end

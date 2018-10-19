@@ -3,6 +3,10 @@ defmodule Mcd.Content.Project do
   import Ecto.Changeset
   alias Mcd.Content.Project
 
+  @moduledoc """
+  The projects schema.
+  """
+
   schema "projects" do
     field(:content, :string)
     field(:description, :string)

@@ -1,12 +1,17 @@
 defmodule Mcd.Content.Post do
   alias Mcd.Content.Post
 
+  @moduledoc """
+  The Post context.
+  """
+
   defstruct slug: "", title: "", date: "", intro: "", content: ""
 
   def compile(file) do
     post = %Post{slug: file_to_slug(file)}
 
-    Path.join(["priv/posts", file])
+    ["#{:code.priv_dir(:mcd)}", "posts", file]
+    |> Path.join()
     |> File.read!()
     |> split
     |> extract(post)

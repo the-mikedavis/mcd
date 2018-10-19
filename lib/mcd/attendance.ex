@@ -1,6 +1,10 @@
 defmodule Mcd.Attendance do
   use GenServer
 
+  @moduledoc """
+  Attendance from Vigilo.
+  """
+
   def start_link do
     GenServer.start_link(__MODULE__, {[], nil}, name: :attendant)
   end
@@ -15,7 +19,8 @@ defmodule Mcd.Attendance do
 
   def handle_cast({:update, devices}, _state) do
     time =
-      Timex.now("EDT")
+      "EDT"
+      |> Timex.now()
       |> Timex.format!("{ISOdate} {ISOtime}")
 
     {:noreply, {devices, time}}

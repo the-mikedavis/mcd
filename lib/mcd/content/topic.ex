@@ -3,6 +3,10 @@ defmodule Mcd.Content.Topic do
   import Ecto.Changeset
   alias Mcd.Content.Topic
 
+  @moduledoc """
+  The topic schema.
+  """
+
   schema "topics" do
     field(:name, :string)
 

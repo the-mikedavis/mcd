@@ -1,6 +1,10 @@
 defmodule Mcd.Content.Crawler do
   alias Mcd.Content.Post
 
+  @moduledoc """
+  Crawls the posts directory to compile posts.
+  """
+
   def crawl() do
     find()
     |> Enum.map(fn file -> Task.async(fn -> Post.compile(file) end) end)

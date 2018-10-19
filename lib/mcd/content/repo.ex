@@ -1,6 +1,10 @@
 defmodule Mcd.Content.Repo do
   use GenServer
 
+  @moduledoc """
+  The repository of posts.
+  """
+
   def start_link() do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
