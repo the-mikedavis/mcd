@@ -1,0 +1,45 @@
+dist: trusty
+sudo: required
+language: elixir
+elixir:
+  - 1.7.2
+otp_release:
+  - 21.0
+addons:
+  postgresql: '9.5'
+env:
+  global:
+    - PGPORT=5432
+    - MIX_ENV=test VERBOSE_TEST=true
+
+before_script:
+  - nvm install 8.9.0
+
+script:
+  - mix format --check-formatted
+  - mix compile --warnings-as-errors
+  - mix coveralls
+  - mix credo
+
+before_deploy:
+  - cd ./assets
+  - yarn install
+  - ./node_modules/.bin/brunch build -p
+  - cd ..
+  - MIX_ENV=prod mix phx.digest
+  - MIX_ENV=prod mix release --env=prod
+
+branches:
+  only:
+    - master
+    - /^v[\d.]+/
+
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: L8PQAAuMOqoY83Z6ndLdxEaN1Z0ujdbRW5Txq0pAVBwnucKcSMiDQ5Sw3R6Ujuy89PnEC9XCIpOmWEyoCltdud9FIvmIxX5vnryiww3s/XNc9V1gKygP+8tcX9l+4BypT1y8wJ7qKGE0pToql/sFLVqjB5/KDS9OJfj9yoGwZ/Bd7+YqPfWT/Ncf5HM0Czk9VWxel0zorAEBhVE7KkQnzV11cOLMV/1vfhiu5yP149QDCmc9OjVi1N6PmvYeRpHbLulV0MvxtX5UXOV+CdWr79Ti7MWye4lNbAz4t79hbXLo2saXR1WLMfR/cSbmmW68F1Utn9GcO/5YBV4sO+YKZkKjO+MuOuZUxXalAJTxmqZ0ZROzMTZfzVo7rT+bWGS2OabVoZ5ZFv/fQ5KCrVVhZArd1HHl7N9/XMNKnAiNzk1EvbpF4WeygjrxCFj06mBhf6MpRlVkIE1PIEmrbA3en0hi0GSnudA1RI1W9NB50wSMQJw34zB68dDy9EdJKLrC2a5hxOcspbmeP+pvO2+QLcK7rm9A7Yf0ssdFmaU6/oMY0MLC4Lu28zFqnCa585xFr0F7fW6euKjLPEIWsxMpNDhxJHHuwAiE7/bpbPRDmzOWCVyK0QsVEtCwYfhjrMynVCkd/E6ItUEbJhef2wnWluU72YHGZABkp5Edlwy1SJs=
+  file_glob: true
+  file: _build/prod/rel/mcd/releases/*/*.tar.gz
+  on:
+    tags: true
