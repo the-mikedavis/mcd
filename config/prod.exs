@@ -5,7 +5,8 @@ config :mcd, McdWeb.Endpoint,
   http: [port: "${MCD_PORT}"],
   url: [host: "${MCD_HOST}"],
   secret_key_base: "${MCD_SECRET_KEY_BASE}",
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  server: true
 
 config :mcd, Mcd.Repo,
   adapter: Ecto.Adapters.Postgres,
