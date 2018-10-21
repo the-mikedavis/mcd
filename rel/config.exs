@@ -62,4 +62,10 @@ release :mcd do
       :runtime_tools
     ]
   )
+
+  set(
+    commands: [
+      seed: "rel/commands/seed.sh"
+    ]
+  )
 end
