@@ -17,7 +17,10 @@ defmodule Mcd.Content.Crawler do
   end
 
   def find() do
-    File.ls!("priv/posts")
+    :code.priv_dir(:mcd)
+    |> to_string()
+    |> Path.join("posts")
+    |> File.ls!()
     |> Enum.filter(&Regex.run(~r/.*\.md$/, &1))
   end
 end
