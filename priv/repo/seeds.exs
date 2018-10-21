@@ -17,7 +17,8 @@ insert = fn str ->
   Repo.get_by(Topic, name: str) || Repo.insert!(%Topic{name: str})
 end
 
-"priv/content/knowledge.json"
+["#{:code.priv_dir(:mcd)}", "content", "knowledge.json"]
+|> Path.join()
 |> File.read!
 |> Poison.decode!()
 |> Enum.each(insert)
