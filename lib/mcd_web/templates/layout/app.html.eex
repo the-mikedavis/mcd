@@ -39,8 +39,9 @@
         <hr>
         <p id="tldr">I'm a Computer Science student from the University of Miami.
         I have experience with web design all across the stack, but
-        these days I'm mostly interested in functional programming and computer
-        vision.</p>
+          these days I'm mostly interested in programming languages and type
+          systems.
+        </p>
         <hr>
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
