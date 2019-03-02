@@ -18,7 +18,7 @@ defmodule McdWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :index)
-    resources("/projects", PostController, only: [:index, :show])
+    resources("/ideas", PostController, only: [:index, :show])
     get("/knowledge", TopicController, :index)
     # get "/vigilo", VigiloController, :index
   end

@@ -4,7 +4,16 @@ date: 2018-03-29
 intro: Elixir is my new favorite language. It should be yours too.
 ---
 
+> This is a collection of notes from when I presented a short introduction to
+> Elixir in a programming languages course. These notes provide a drive-by
+> view of Elixir and don't touch on the interesting parts like the Actor Model
+> and other patterns. For a more in-depth introduction, see the
+> [main Elixir documentation](https://elixir-lang.org/).
+
+<hr>
+
 Introducing Elixir.
+
 Elixir is one of the most well thought-out languages around. It's young
 (from 2011), but it's already a huge game-changer, especially in the
 world of functional web development.
@@ -90,8 +99,8 @@ iex> tail
 [3, 4, 5, 6]
 ```
 
-The `|` operator allows us to split a data structure. With it, we can
-perform tons of cool recursive functions on data.
+The `|` operator allows us to split a list. With it, we can
+perform tons of cool recursive functions on lists.
 
 ```elixir
 iex> defmodule Sandbox do
@@ -118,7 +127,7 @@ iex> Factorial.of 100
 3628800
 ```
 
-That was a lot. What exactly happend there?
+Cool! What exactly happend there?
 
 ## Modules
 
