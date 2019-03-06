@@ -200,7 +200,7 @@ Refresher on why macros are good:
 Macros can hide things and that's good for configuration but bad for
 readability and hygiene (code cleanliness like `coveralls` and `credo`).
 
-## The Point
+## Keeping it Hygienic
 {: #the-point}
 
 When we create a macro that defines a generic module, we can minimize the size
@@ -212,16 +212,21 @@ compact, generic functions by proxying a library.
 defmodule MyAbstraction do
   defmacro my_macro(opts) do
     quote do
+      alias MyAbstraction.Impl
+
       def one_func(arg),
-        do: MyAbstraction.one_func(unquote(opts.server), arg)
+        do: Impl.one_func(unquote(opts.server), arg)
 
       def another_func(arg),
-        do: MyAbstraction.another_func(unquote(opts.something, arg))
+        do: Impl.another_func(unquote(opts.something, arg))
 
       .. # etc.
     end
   end
+end
   
+# still in library
+defmodule MyAbstraction.Impl do
   def one_func(server, arg) do
     GenServer.call(server, {:one_func, arg})
     # other things
@@ -242,7 +247,20 @@ defmodule MyApp.AbstractionImplementation do
 end
 ```
 
+We get our cake and eat it too. The implementation modules keep the same API and
+still don't have to pass any annoying configuration. The `__using__/1` macro
+_only_ hides configuration. The library functions _only_ do library things.
 With this, `coveralls` and `credo` have access to the _important_ code. The
 injected functions are one-liners. The library code is _accessible_, albeit in a
 raw format. And now because the quote block is so small, the definition is
-readable. So when you write a function-injection macro, please do this.
+readable.
+
+So when you write a function-injection macro, please do this.
+
+## Forward Thinking
+
+There's still room for improvement. With
+[`defmodulep`](https://github.com/josevalim/defmodulep), we can make the
+`MyAbstraction.Impl` module private and keep our test coverage. Unfortunately,
+we'll [have to wait for the core Elixir
+implementation](https://github.com/josevalim/defmodulep/issues/1).
