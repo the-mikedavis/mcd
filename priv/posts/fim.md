@@ -207,8 +207,12 @@ When we create a macro that defines a generic module, we can minimize the size
 of the macro and maximize the hygiene, all while keeping our ability to inject
 compact, generic functions by proxying a library.
 
+The idea is to move anything that's unquoted or any `__SOMETHING__` value into
+a parameter. Here's the big quoted block refactored to proxy an `Impl` module.
+
 ```elixir
 # in library
+# `lib/my_abstraction.ex`
 defmodule MyAbstraction do
   defmacro my_macro(opts) do
     quote do
@@ -226,6 +230,7 @@ defmodule MyAbstraction do
 end
   
 # still in library
+# `lib/my_abstraction/impl.ex`
 defmodule MyAbstraction.Impl do
   def one_func(server, arg) do
     GenServer.call(server, {:one_func, arg})
@@ -242,6 +247,7 @@ defmodule MyAbstraction.Impl do
 end
 
 # in project
+# `lib/my_app/abstraction_implementation.ex`
 defmodule MyApp.AbstractionImplementation do
   use MyAbstraction, server: MyApp.SomethingServer
 end
@@ -256,6 +262,34 @@ raw format. And now because the quote block is so small, the definition is
 readable.
 
 So when you write a function-injection macro, please do this.
+
+## A Perfect Example
+
+`Ecto.Repo` is probably one of the best known function injection macros. It's
+also an exemplar follower of the library-proxy method. [see the source
+here](https://github.com/elixir-ecto/ecto/blob/master/lib/ecto/repo.ex#L188)
+
+```elixir
+def insert(struct, opts \\ []) do
+  Ecto.Repo.Schema.insert(__MODULE__, struct, opts)
+end
+
+def update(struct, opts \\ []) do
+  Ecto.Repo.Schema.update(__MODULE__, struct, opts)
+end
+
+def insert_or_update(changeset, opts \\ []) do
+  Ecto.Repo.Schema.insert_or_update(__MODULE__, changeset, opts)
+end
+
+def delete(struct, opts \\ []) do
+  Ecto.Repo.Schema.delete(__MODULE__, struct, opts)
+end
+```
+
+`__MODULE__` is passed in as a parameter to wider functions in the library. For
+large libraries like Ecto, this is a huge improvement to organization. Imagine
+if every toplevel Repo function was implemented in the `__using__/1` definition!
 
 ## Forward Thinking
 
