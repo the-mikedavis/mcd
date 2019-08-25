@@ -52,6 +52,7 @@ defmodule Mcd.Mixfile do
       {:cowboy, "~> 1.0"},
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.2.1"},
+      {:tzdata, "~> 0.5.21"},
       {:yamerl, "~> 0.6.0"},
       # test
       {:credo, "~> 0.9", only: [:dev, :test], runtime: false},
